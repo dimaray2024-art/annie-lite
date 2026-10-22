@@ -1,0 +1,84 @@
+{
+  "name": "annie-lite",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "语音优先的桌面助手：豆包实时语音负责听说，Pi 负责执行长任务",
+  "author": "dimaray2024-art",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimaray2024-art/annie-lite.git"
+  },
+  "homepage": "https://github.com/dimaray2024-art/annie-lite#readme",
+  "bugs": {
+    "url": "https://github.com/dimaray2024-art/annie-lite/issues"
+  },
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "npm run typecheck && electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package:mac": "npm run build && electron-builder --mac dir"
+  },
+  "dependencies": {
+    "aliyun-rtc-sdk": "^7.3.7",
+    "sherpa-onnx-node": "^1.13.8",
+    "ws": "^8.18.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/three": "^0.171.0",
+    "@types/ws": "^8.5.13",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.3.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.171.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vitest": "^2.1.8"
+  },
+  "allowScripts": {
+    "electron@33.4.11": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.21.5": true,
+    "fsevents": false
+  },
+  "build": {
+    "appId": "io.github.dimaray2024-art.annie-lite",
+    "productName": "annie-lite",
+    "icon": "resources/icon/annie-app-icon.png",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/models/wake-word",
+        "to": "models/wake-word"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dir"
+      ],
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "用于本地检测唤醒词和语音对话。待机音频只在本机处理，命中唤醒词前不会上传。"
+      }
+    }
+  }
+}

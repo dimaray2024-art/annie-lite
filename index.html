@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 渲染层不允许加载任何远端资源；样式内联是 Vite 注入的，所以 style-src 需要 unsafe-inline -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; worker-src 'self' blob: data:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://localhost:* http://localhost:* https://api.vidu.cn wss://api.vidu.cn https://api.vidu.com wss://api.vidu.com https://slsrole.alicdn.com https://vod.cn-shanghai.aliyuncs.com wss://rtn.aliyuncs.com wss://rs.rtn.aliyuncs.com https://rs.rtn.aliyuncs.com https://time.akamai.com https://alivc-aio.cn-hangzhou.log.aliyuncs.com https://apsara-video-client.cn-shanghai.log.aliyuncs.com https://videocloud.cn-hangzhou.log.aliyuncs.com https://arms-retcode.aliyuncs.com http://r5-rtcpub.media-sh.alivecdn.com https://r5-rtcpub.media-sh.alivecdn.com http://r5-rtcsub.media-sh.alivecdn.com https://r5-rtcsub.media-sh.alivecdn.com http://rsdk-rtcsub.data.alivecdn.com https://rsdk-rtcsub.data.alivecdn.com; media-src 'self' blob:"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>annie-lite</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
